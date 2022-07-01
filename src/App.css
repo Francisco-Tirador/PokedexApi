@@ -1,0 +1,21 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+body{
+  background-color: steelblue;
+}
+
+.targetPokemon{
+  display:inline-block;
+  margin:1%;
+  width:25%
+}
+
+.tipo{
+  width: 25px;
+  height: 10px;
+  border-radius: 10px;
+}

@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const conterSlice= createSlice(
     {
         name:"URL",
-        initialState:0,
+        initialState:1700,
         reducers:{
         reset:(set,accion)=>accion.payload
         }

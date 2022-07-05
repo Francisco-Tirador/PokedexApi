@@ -37,10 +37,7 @@ const api="hola"
 
     const nameMA = Pokemon?.name?.toUpperCase()
 
-    const color = {
-        backgroundColor: Pokemon?.color?.name
-    }
-
+    
 
 
     return (
@@ -48,15 +45,16 @@ const api="hola"
         <div className="targetPokemon">
 
             <div>
+                <p>{Pokemon?.id}</p>
                 <h2>{nameMA}</h2>
-                <p><span>BASE SCORE  : </span> {Pokemon?.pal_park_encounters?.[0]?.base_score}</p>
-                <p><span> RATE  : </span> {Pokemon?.pal_park_encounters?.[0]?.rate}</p>
-                <p><span>CAPTURE RATE  : </span> {Pokemon?.capture_rate}</p>
+                <img src={Pokemon?.sprites?.front_default} alt="" />
+
+
             </div>
 
-            <div className='tipo' style={color}></div>
+            
             <p onClick={irATarge}>Mas sobre mi</p>
-        </div>
+        </div> 
     )
 }
 

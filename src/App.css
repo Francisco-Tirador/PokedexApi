@@ -5,7 +5,7 @@
 }
 
 body{
-  background-color: steelblue;
+  background-color: rgb(11, 112, 180);
 }
 
 .targetPokemon{
@@ -18,4 +18,19 @@ body{
   width: 25px;
   height: 10px;
   border-radius: 10px;
+}
+
+ç´ç´ç´ç´ç
+
+.buttMode{
+width: 5%;
+}
+
+.Soleado{
+  background-color: rgb(24, 121, 177);
+}
+
+.Obscuro{
+  background-color: rgb(56, 56, 56);
+  color: white;
 }

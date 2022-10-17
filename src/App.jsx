@@ -13,7 +13,8 @@ function App() {
     <div className="App">
 
       
-      
+<img className='ho' src="https://www.pngplay.com/wp-content/uploads/11/Ho-Oh-Pokemon-Transparent-PNG.png" alt="" />
+    
      <Routes>
       
       <Route path='/' element={<House/>}/>

@@ -2,10 +2,106 @@
   text-align: center;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 body{
-  background-color: rgb(11, 112, 180);
+  background-image: url(https://www.teahub.io/photos/full/276-2766009_anime-landscape-mountain-field-grass-lake-scenic-anime.jpg);
+  background-size: cover;
+}
+body::-webkit-scrollbar{
+  width: 1px;
+  background:none;
+}
+body::-webkit-scrollbar-thumb{
+  width: 1px;
+  background:none;
+}
+button{
+  background: none;
+  border: 0;
+}
+
+.botonX{
+  width:50px;
+}
+
+.welcome{
+  /* margin-left:30% ; */
+  position: absolute;
+  width: 600px;
+  height: 500px;
+}
+.welcome form{
+  display: flex;
+  position: absolute;
+  width: 400px;
+  bottom: 100px; 
+  left: 20%;
+  justify-content: space-between;
+}
+.inputWelcome{
+  border: 0;
+  width: 280px;
+  height: 45px;
+  border-radius:20px ;
+  background-color: rgb(153, 195, 246);
+}
+.welcome label{
+  font-size: 30px;
+  margin-right: 5px;
+}
+
+
+.logo{
+  width: 500px;
+  animation: 1s infinite ease-in-out alternate logo;
+}
+
+.ho{
+  width: 200px;
+  position: absolute;
+  bottom: 10%;
+  left: -30%;
+  animation: 4s 3s 1 linear  HoOh;
+
+}
+@keyframes HoOh{
+
+  100%{
+   transform: translate(1900px, -200px) rotate(60deg) scale(2);
+  }
+
+}
+
+
+@keyframes logo{
+  100%{
+    transform: translateY(20px);
+  }
+}
+
+.pokemonWelcome{
+  position: relative;
+  display: flex;
+  bottom:10%;
+}
+.pokemonWelcome img{
+  width: 150px;
+}
+.pokemonWelcome h1{
+  background-color: antiquewhite;
+  border-radius:20px ;
+}
+.pokemonWelcome div{
+  position: absolute;
+  right: 20%;
+  top: 30%;
+  width: 10px;
+  height: 10px;
+  border-bottom: 20px solid antiquewhite;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
 }
 
 .targetPokemon{
@@ -20,7 +116,7 @@ body{
   border-radius: 10px;
 }
 
-ç´ç´ç´ç´ç
+
 
 .buttMode{
 width: 5%;

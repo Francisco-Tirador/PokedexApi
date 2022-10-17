@@ -19,7 +19,7 @@ const House = () => {
 }
 
 
-ar()
+ ar()
 
   const nameCo=useSelector(nam=>nam.nameCouch)
 
@@ -39,14 +39,20 @@ const dispach=useDispatch()
 
     
   return (
-    <div>
+    <div className='welcome'>
+
+      <img className='logo' src="https://www.freepnglogos.com/uploads/pokemon-logo-png-0.png" alt="logo pokemon" />
         <form onSubmit={handleSubmit(submit)}>
             <label htmlFor="name">Name</label>
-            <input placeholder="Enter your name" type="text" id='name' {...register("NombreEntrenador")}/>
-            <button onClick={submit}>GO</button>
+            <input className='inputWelcome' placeholder="Enter your name" type="text" id='name' required {...register("NombreEntrenador")}/>
+            <button onClick={submit}><img className='botonX' src="https://cdn-icons-png.flaticon.com/512/1536/1536958.png"/></button>
         </form>
-        <h1>{nameCo}</h1>
-    </div>
+        <div className='pokemonWelcome'>
+        <h1>Hello coach, sorry I forgot your name, could you repeat it </h1>
+        <img src="https://www.megaidea.net/wp-content/uploads/2021/08/Pokemon27.png" alt="" />
+        <div></div>
+        </div>
+   </div>
   )
 }
 

@@ -21,6 +21,8 @@ axios.get(`${rel}`)
 
 }
 
+
+
 useEffect(() => {
  getInfo()
 }, [])

@@ -41,6 +41,7 @@ button{
   justify-content: space-between;
 }
 .inputWelcome{
+  text-align: center;
   border: 0;
   width: 280px;
   height: 45px;
@@ -92,6 +93,7 @@ button{
 .pokemonWelcome h1{
   background-color: antiquewhite;
   border-radius:20px ;
+  z-index: 30;
 }
 .pokemonWelcome div{
   position: absolute;
@@ -104,11 +106,118 @@ button{
   border-right: 30px solid transparent;
 }
 
+
+/* -------------------------pokebola------------------------ */
+
+.Pokedex{
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.Pokebola{
+  color: aliceblue;
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 300px;
+  margin: 30px;
+  border-radius:50% ;
+  background-image: linear-gradient(to bottom, rgb(135, 135, 135), rgb(0, 0, 0));
+  overflow: hidden;
+  justify-content: center;
+  text-align: center;
+
+}
+
+.PartRed{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  background-color: rgb(226, 1, 1);
+  height: 50%;
+  border-bottom: 15px solid black;
+  transform: perspective(800px) rotateY(0deg);
+  transition: .5s;
+  z-index: 200;
+}
+.cerradura{
+  position: absolute;
+  background-color: rgb(73, 73, 73);
+  box-sizing: border-box;
+  width: 70px;
+  height: 70px;
+  bottom: -25%;
+  border-radius: 50%;
+  border: 15px solid rgb(0, 0, 0);
+}
+
+.PartWhait{
+  position: relative;
+  background-color: rgb(233, 233, 233);
+  height: 50%;
+  transform: perspective(800px) rotateY(0deg);
+  transition: .5s;
+  z-index: 50;
+}
+
+.Pokebola:hover .PartRed{
+  transform: translateY(-150px);
+}
+.Pokebola:hover .PartWhait{
+  transform: translateY(150px);
+}
+
+.Information{
+  display: inline;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left:10%;
+  right: 10%;
+  z-index: 9;
+  transform:perspective(800px) rotateY(180deg) rotate(360deg);
+  transition: .5s;
+}
+.Information img{
+  width: 150px;
+  animation: 1s infinite ease-in-out alternate movIMG;
+}
+.CircleColor{
+border-radius: 50%;
+}
+
+.water{
+  background-color: rgb(5, 129, 231);
+}
+.fire{
+  background-color: rgb(196, 61, 8);
+}
+
+
+
+
+.Pokebola:hover .Information{
+  transform:rotateY(1deg) ;
+}
+
+@keyframes movIMG{
+  100%{
+    transform: translateY(-30px);
+  }
+}
+
 .targetPokemon{
   display:inline-block;
   margin:1%;
   width:25%
 }
+
+
+
+
+
 
 .tipo{
   width: 25px;

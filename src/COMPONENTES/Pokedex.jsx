@@ -125,7 +125,7 @@ console.log(PokemonSearchLimit)
                 TypeList={TypeList}
                 FilterType={setFilterType}
               />
-              <Paginas
+              <Paginas 
               setPagina={setPagina}
               Pagina={Pagina}
               arrayPaginas={arrayPaginas}

@@ -5,7 +5,9 @@ const Form = ({Estado,TypeList,FilterType}) => {
 
 
 const rald=e=>{
-  Estado(e.target.value)
+  if(e.target.value?.length===0){
+  Estado()
+  }else{Estado(e.target.value)}
 }
 
 
@@ -14,7 +16,7 @@ const falc=e=>{
 }
 
 
-console.log(TypeList)
+// console.log(TypeList)
   return (
     <div>
         <form >

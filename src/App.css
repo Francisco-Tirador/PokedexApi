@@ -21,6 +21,10 @@ button{
   background: none;
   border: 0;
 }
+.active{
+  background-color: blue;
+}
+
 
 .botonX{
   width:50px;
@@ -131,7 +135,7 @@ button{
 
 }
 
-.PartRed{
+/* .PartRed{
   display: flex;
   justify-content: center;
   position: relative;
@@ -167,7 +171,7 @@ button{
 }
 .Pokebola:hover .PartWhait{
   transform: translateY(150px);
-}
+} */
 
 .Information{
   display: inline;
@@ -192,10 +196,12 @@ border-radius: 50%;
   background-color: rgb(5, 129, 231);
 }
 .fire{
-  background-color: rgb(196, 61, 8);
+  background-color: rgb(232, 5, 5);
 }
-
-
+.grass{
+  background-color: rgb(131, 204, 82);
+}
+.bug{background-color: rgb(42, 162, 42);}
 
 
 .Pokebola:hover .Information{

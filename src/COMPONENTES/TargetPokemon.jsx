@@ -19,7 +19,7 @@ const [Color, setColor] = useState('No')
             .then(api => setPokemon(api?.data))
     }
 
-    console.log(Pokemon)
+    // console.log(Pokemon)
 
     useEffect(() => {
         getPokemon()
@@ -32,7 +32,7 @@ useEffect(() => {
          { const URL=Pokemon?.species?.url
             axios.get(URL)
             .then(res=>setColor(res?.data))
-        console.log('soy un solo renderizado')
+        // console.log('soy un solo renderizado')
         }
      }, [Pokemon])
 
@@ -57,11 +57,13 @@ useEffect(() => {
                     <div className='Information'>
       
                         <p>{Pokemon?.id}</p>
-                        <div className='CircleColor' style={color}>
+                        <div className={`CircleColor `} 
+                        // style={color}
+                        >
                             <img src={Pokemon?.sprites?.other?.dream_world?.front_default} alt="" />
                         </div>
                         <h2>{nameMA}</h2>
-                        <p>{Pokemon?.types?.type?.name[0]}</p>
+                        {/* <p>{Pokemon?.types[0]?.type?.name}</p> */}
                     </div>
                 </div>
             </div>

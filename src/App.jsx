@@ -31,9 +31,7 @@ useEffect(() => {
   return (
     <div className={`App ${Mode}`}>
 
-      
-<img className='ho' src="https://www.pngplay.com/wp-content/uploads/11/Ho-Oh-Pokemon-Transparent-PNG.png" alt="" />
-    
+
 
 
 

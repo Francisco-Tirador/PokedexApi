@@ -56,6 +56,9 @@ const dispach=useDispatch()
       <div></div>
         </div>
         </div>
+              
+<img className='ho' src="https://www.pngplay.com/wp-content/uploads/11/Ho-Oh-Pokemon-Transparent-PNG.png" alt="" />
+    
    </div>
   )
 }

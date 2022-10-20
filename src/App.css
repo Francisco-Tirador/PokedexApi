@@ -3,74 +3,116 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-attachment: fixed;
+  background-size: cover;
+  overflow: scroll;
+  height: 100vh;
+
 }
 
-body{
-  background-image: url(https://www.teahub.io/photos/full/276-2766009_anime-landscape-mountain-field-grass-lake-scenic-anime.jpg);
-  background-size: cover;
+.ligthMode{
+background-image: url(https://www.teahub.io/photos/full/276-2766009_anime-landscape-mountain-field-grass-lake-scenic-anime.jpg);
 }
-body::-webkit-scrollbar{
+.darkMode{
+  background-image: url(https://i.pinimg.com/originals/5b/cd/d9/5bcdd9b8f8e99f96d73193806b78f4a4.png);
+ 
+}
+/* body{
+  
+  background-image: url(https://i.pinimg.com/originals/5b/cd/d9/5bcdd9b8f8e99f96d73193806b78f4a4.png);
+ 
+} */
+/* body::-webkit-scrollbar{
   width: 1px;
   background:none;
 }
 body::-webkit-scrollbar-thumb{
   width: 1px;
   background:none;
+} */
+
+.App::-webkit-scrollbar{
+  width: 0px;
+  height: 1px;
+  background:none;
 }
+.App::-webkit-scrollbar-thumb{
+  height: 1px;
+  width: 0px;
+  background:none;
+}
+
 button{
   background: none;
   border: 0;
 }
-.active{
-  background-color: blue;
-}
+
+
 
 
 .botonX{
   width:50px;
+  cursor: pointer;
 }
 
-.welcome{
-  /* margin-left:30% ; */
-  position: absolute;
-  width: 600px;
-  height: 500px;
+/* -----si no tiene .val se descuadra */
+.val{
+  height: 100vh;
 }
-.welcome form{
-  display: flex;
-  position: absolute;
-  width: 400px;
-  bottom: 100px; 
-  left: 20%;
-  justify-content: space-between;
-}
-.inputWelcome{
+
+.welcom{
   text-align: center;
-  border: 0;
-  width: 280px;
-  height: 45px;
-  border-radius:20px ;
-  background-color: rgb(153, 195, 246);
-}
-.welcome label{
-  font-size: 30px;
-  margin-right: 5px;
+  position: relative;
+  overflow: hidden;
+  height: 600px;
+  width: 700px;
+} 
+
+.inputWelcome{
+  display: inline-block;
+  text-align: center;
+  background-color: steelblue;
+  width: 400px;
+  border-radius: 30px;
 }
 
+.inputWelcome input{
+  width: 350px;
+  text-align: center;
+  height: 30px;
+  border-radius: 20px;
+}
+
+.inputWelcome label{
+  font-size: 30px;
+  font-weight: 900;
+}
+.contenLogo{
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  height: 300px;
+
+}
 
 .logo{
+  position: absolute;
+  left: 0;
+  bottom: 10%;
   width: 500px;
   animation: 1s infinite ease-in-out alternate logo;
 }
 
 .ho{
+
   width: 200px;
-  position: absolute;
+ position: absolute;
   bottom: 10%;
   left: -30%;
-  animation: 4s 3s 1 linear  HoOh;
+  animation: 4s 3s 1 linear  HoOh; 
+ } 
 
-}
 @keyframes HoOh{
 
   100%{
@@ -84,12 +126,11 @@ button{
   100%{
     transform: translateY(20px);
   }
-}
+} 
 
 .pokemonWelcome{
   position: relative;
   display: flex;
-  bottom:10%;
 }
 .pokemonWelcome img{
   width: 150px;
@@ -97,11 +138,13 @@ button{
 .pokemonWelcome h1{
   background-color: antiquewhite;
   border-radius:20px ;
+  box-sizing: content-box;
+  padding: 10px;
   z-index: 30;
 }
 .pokemonWelcome div{
   position: absolute;
-  right: 20%;
+  right: 17%;
   top: 30%;
   width: 10px;
   height: 10px;
@@ -110,7 +153,112 @@ button{
   border-right: 30px solid transparent;
 }
 
+/* ---------------------------------Head------------------------------- */
+.Head{
+  display: inline-block;
+  position: relative;
+  background-color: rgba(54, 54, 54, 0.649);
+ width: 90%;
+  padding: 10px;
+  border-radius: 0 0 50px 50px;
+}
+.PokedexButton{
+  border-radius: 20px;
+  box-shadow: 10px 5px 20px black;
+  background-color: rgb(2, 87, 206);
+  margin: 0px 20px;
+  font-weight: 900;
+  cursor: pointer;
+}
+.PokedexButton:hover{
+  transform: scale(1.2);
+}
+.Head h2{
+  margin: 0 0 20px;
+  font-size: 40px;
+  color: aliceblue;
+}
+.PokemonRandom{
+  position: absolute;
+  background-color: yellow;
+  margin-left: 2%;
+}
+.PokemonRandom img {
+  width: 60px;
+}
+/* -----------------------------Form of Head -------------------------- */
+.Form{
+  margin: 20px;
+}
+.Form input{
+  border: 0;
+  border-radius: 20px;
+  height: 50px;
+  text-align: center;
+  width: 300px;
+  background-color: rgb(24, 138, 231);
+}
+.Selection{
+  text-align: center;
+  background-color: rgb(27, 72, 253);
+  width: 100px;
+  height: 30px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.Selection option{
+  background-color: yellowgreen;
+}
+/* -----------------------------Paginacion-------------------------- */
+.contenPaginacion{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  height: 50px;
+}
+.pagi{
+  background-color: aliceblue;
+  width:30px;
+  height: 30px;
+  border-radius:10px ;
+  margin: 0 20px;
+  font-size: 25px;
+}
+.pagi:hover{
+  transform: scale(1.2);
+}
+.active{
+  font-size: 25px;
+  background-image: url(https://cdn-icons-png.flaticon.com/512/188/188954.png);
+  background-size: contain;
+  width:30px;
+  height: 30px;
+  border-radius:10px ;
+  margin: 0 20px;
+}
+.Bloke{
+  list-style: none;
+  display: inline-flex;
+  margin: 0px 30px;
+  cursor: pointer;
+}
+.Fle{
+  background-image: url(https://cdn-icons-png.flaticon.com/512/188/188966.png);
+  width: 50px;
+  background-size: contain;
+  cursor: pointer;
+}
 
+.Dere{
+  transform: rotate(-90deg);
+}
+.Izquie{
+  transform: rotate(90deg);
+}
+.PagTotal{
+  font-weight: 900;
+  font-size: 30px;
+}
 /* -------------------------pokebola------------------------ */
 
 .Pokedex{
@@ -132,10 +280,20 @@ button{
   overflow: hidden;
   justify-content: center;
   text-align: center;
-
+  animation: 0.2s  1 linear reverse MovePoke;
+}
+@keyframes MovePoke{
+  50%{
+    transform: translate(-10px);
+  }
+  100%{
+    transform: translateX(10px);
+  }
 }
 
-/* .PartRed{
+
+
+.PartRed{
   display: flex;
   justify-content: center;
   position: relative;
@@ -171,7 +329,7 @@ button{
 }
 .Pokebola:hover .PartWhait{
   transform: translateY(150px);
-} */
+}
 
 .Information{
   display: inline;

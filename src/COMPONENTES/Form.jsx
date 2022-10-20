@@ -19,14 +19,14 @@ const falc=e=>{
 // console.log(TypeList)
   return (
     <div>
-        <form >
+        <form className='Form'>
        
         <input type="text" placeholder='Search your favorite Pokemon'
         onChange={rald}
         />
 
-      <select onChange={falc}>
-        <option value="All Pokemon">All Pokemon</option>
+      <select className='Selection' onChange={falc}>
+        <option value="All Pokemon" >All Pokemon</option>
         {
           TypeList?.map(
             type=>(

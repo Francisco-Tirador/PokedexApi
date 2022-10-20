@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux/es/exports'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { reset } from './store/Slice/urlSlice'
 
-const TargetPokemon = ({ URL }) => {
+const TargetPokemon = ({ URL,Cl}) => {
 
 const la=useSelector(state=>state.URL)
 const dispach=useDispatch()
@@ -19,15 +19,13 @@ const [Color, setColor] = useState('No')
             .then(api => setPokemon(api?.data))
     }
 
-    // console.log(Pokemon)
 
     useEffect(() => {
         getPokemon()
     }, [])
 
-// Pokemon?.name&&
-// 
-useEffect(() => {
+
+    useEffect(() => {
          if(Pokemon)
          { const URL=Pokemon?.species?.url
             axios.get(URL)
@@ -52,15 +50,15 @@ useEffect(() => {
     return (
             <div>
                 <div className='Pokebola'>
-                    <div className='PartRed'><div className='cerradura'><p>{Pokemon?.id}</p></div></div>
-                    <div className='PartWhait'></div>
+                    <div className={` ${Cl&&'PartRed'}`}><div className='cerradura'><p>{Pokemon?.id}</p></div></div>
+                    <div className={` ${Cl&&'PartWhait'}`}></div>
                     <div className='Information'>
       
                         <p>{Pokemon?.id}</p>
                         <div className={`CircleColor `} 
                         // style={color}
                         >
-                            <img src={Pokemon?.sprites?.other?.dream_world?.front_default} alt="" />
+                            <img src={Pokemon?.sprites?.other?.dream_world?.front_default?Pokemon?.sprites?.other?.dream_world?.front_default:Pokemon?.sprites?.front_default} alt="" />
                         </div>
                         <h2>{nameMA}</h2>
                         {/* <p>{Pokemon?.types[0]?.type?.name}</p> */}

@@ -23,19 +23,21 @@ const Paginas = ({Pagina,arrayPaginas,setPagina,contadorPaginas}) => {
    }
   
   return (
-    <div>
-        <div onClick={derechaNext}>derecha</div>
-        <div>
+    <div >
+        <div className='contenPaginacion'>
+        <div onClick={derechaNext} className='Fle Dere'></div>
+        <div className='Bloke'>
             {
                 arrayPaginas?.map(num=>(
                     <li key={num} onClick={()=>pagNum(num)}
-                    className={num===Pagina?'active':''}
+                    className={num===Pagina?'active':'pagi'}
                     >{num}</li>
                 ))
             }
         </div>
-        <div onClick={izquierdaNext}>izquierda</div>
-        <div>total de paginas {contadorPaginas}</div>
+        <div onClick={izquierdaNext} className='Fle Izquie'></div>
+        </div>
+        <div className='PagTotal'>All pagines {contadorPaginas}</div>
     </div>
   )
 }

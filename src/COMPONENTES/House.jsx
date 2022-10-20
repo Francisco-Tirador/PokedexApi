@@ -27,30 +27,34 @@ const House = () => {
 
     const butt=useNavigate()
 
-   
-
+ 
 const dispach=useDispatch()
 
     const submit=data=>{
-       
+      localStorage.setItem('Modevew','ligthMode')
         dispach(reset(data?.NombreEntrenador))
         butt("/POKEDEX/")
     }
 
     
   return (
-    <div className='welcome'>
-
-      <img className='logo' src="https://www.freepnglogos.com/uploads/pokemon-logo-png-0.png" alt="logo pokemon" />
+    <div className='val'>
+    <div className='welcom'>
+        <div className='contenLogo'>
+        <img className='logo' src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png" alt="logo pokemon" />
+        </div>
+     <div className='inputWelcome'>
         <form onSubmit={handleSubmit(submit)}>
             <label htmlFor="name">Name</label>
-            <input className='inputWelcome' placeholder="Enter your name" type="text" id='name' required {...register("NombreEntrenador")}/>
+            <input  placeholder="Enter your name" type="text" id='name' required {...register("NombreEntrenador")}/>
             <button onClick={submit}><img className='botonX' src="https://cdn-icons-png.flaticon.com/512/1536/1536958.png"/></button>
         </form>
+        </div>
         <div className='pokemonWelcome'>
         <h1>Hello coach, sorry I forgot your name, could you repeat it </h1>
         <img src="https://www.megaidea.net/wp-content/uploads/2021/08/Pokemon27.png" alt="" />
-        <div></div>
+      <div></div>
+        </div>
         </div>
    </div>
   )

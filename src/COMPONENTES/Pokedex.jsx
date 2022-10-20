@@ -5,25 +5,27 @@ import TargetPokemon from './TargetPokemon'
 import { useSelector } from 'react-redux'
 import Form from "./Form"
 import Paginas from './Paginas'
-import { PaginaLimitacion } from '../utils/paginacion'
+import { Bloke, PaginaLimitacion } from '../utils/paginacion'
+import { useNavigate } from 'react-router-dom'
 
-const Pokedex = () => {
+const Pokedex = ({setMode,Mode}) => {
   const nameCouch = useSelector(date => date.nameCouch)
 
-  const [Poketion, setPoke] = useState()
-  const [SearchPokemon, setSearchPokemon] = useState()
-  const [FilterPokemon, setFilterPokemon] = useState()
-  const [TypeList, setTypeList] = useState()
-  const [FilterType, setFilterType] = useState("All Pokemon")
+  const [Poketion, setPoke] = useState()//*Aqui se almacena los poquemones por tipo
+  const [SearchPokemon, setSearchPokemon] = useState()//*Aqui se almacena las palabras escritas en el imput
+  const [FilterPokemon, setFilterPokemon] = useState()//*Aqui se almacenan los pokemones Filtrados con el SearchPokemon
+  const [TypeList, setTypeList] = useState()//*aqui se le pasa por propiedad todos los tipos de pokemon a Form para desplegar las Opciones
+  const [FilterType, setFilterType] = useState("All Pokemon")//*se almacena la respuesta del input para mandar a llmar a los pokemones por tipo
   /////////////////////////
 
 
-
-  const getPokemones=()=>{
+const [Pagina, setPagina] = useState(1)
+  //?Peticion condicionada 
+  const getPokemones = () => {
     if (FilterType === "All Pokemon") {
 
 
-      axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200`)
+      axios.get(`https://pokeapi.co/api/v2/pokemon/?offset=0&limit=300`)
         .then(api =>
           setPoke(api?.data?.results)
         )
@@ -39,30 +41,25 @@ const Pokedex = () => {
     }
 
   }
+  //?Primer renderizado y cambio de Filter
 
   useEffect(() => {
     getPokemones()
-    
+    setPagina(1)
   }, [FilterType])
-// console.log(Poketion)
 
-  /////////////////////////
-  // const arrayPoke=Poketion?
-
-
+  //?Renderizamos con el metodo include Para buscar pokemon en especifico
   useEffect(() => {
-    if (SearchPokemon?.length==0){
-      // setFilterType()
-     console.log("Hola yo renderice")
-      getPokemones()}
-    else if(SearchPokemon?.length>=1){
+    if (SearchPokemon?.length >= 1) {
+      console.log("Hola yo renderice")
+      setPagina(1)
       setFilterPokemon(Poketion?.filter(e => e.name.includes(SearchPokemon.toLowerCase())))
     }
   }, [SearchPokemon])
 
-console.log(SearchPokemon?.length)
 
 
+  //?Mandamos a traer todos los tipos de pokemon
   useEffect(() => {
 
     axios.get(`https://pokeapi.co/api/v2/type/`)
@@ -73,88 +70,121 @@ console.log(SearchPokemon?.length)
 
   }, [])
 
-  //? aqui em pieza la paginacion para la busqueda por tipo de Pokemon
-  const [Pagina, setPagina] = useState(1) //? aqui es el numero de la pagina y por pagina seran 9 pokemones
-
-  const arrayPokemons=[]      //?aqui se van a guardar los pokemones
-  const totalPokemonsXpagina=9 //?indicamos la cantidad total de los pokemones
  
-  if(FilterPokemon?.length<totalPokemonsXpagina){
-    arrayPokemons.push(...FilterPokemon)
-  }else{
-    const lastPokemon=Pagina*totalPokemonsXpagina //?sacaremos la cantidad de pokeones conmultiplicacion de la pagina 
-    arrayPokemons.push(FilterPokemon?.slice(lastPokemon-totalPokemonsXpagina,lastPokemon))//?con un slice cortamos y pusheamos
+
+  //?AQUI empieza la paginacion
+  const PokemonSearchLimit = PaginaLimitacion(FilterPokemon, Pagina) //!esto es un hook que Yo cree
+  const PokemonTypeLimit = PaginaLimitacion(Poketion, Pagina)
+
+
+  const PaginacionBlokeFilter= Bloke(FilterPokemon, Pagina, 5)//!este Hook nos sirve para Crear los bloques de paginacion y yo lo cree
+  const PaginacionBlokeType = Bloke(Poketion, Pagina, 5)
+
+  //?Boton para mostrar todas las pokebolas
+
+  const [Clase, setClase] = useState(true)
+
+  const activClass = () => {
+    if (Clase) { setClase(false) }
+    else { setClase(true) }
   }
+  //?Boton Modo obscuro op claro
 
-  console.log(arrayPokemons)
-  //*aqui se crea el controlador de la paginacion
-  let arrayPaginas=[]
-  //*aqui sacamos la cantidad de paginas que habria dividiendo tdos los pokemones entre el
-  //* numereo de pokemon  x pagina
-  const contadorPaginas=Math.ceil(Poketion?.length/totalPokemonsXpagina)//todo
-  const totalPaginasBlock=6//Todo
-  //! Math nos redondea la cantitad de pendiendo del metodo siguinte, por decir el metodo ceil redondea para aariba
-  let AllPaginas=Math.ceil(Pagina/totalPaginasBlock)// todo *aqui dividimos la pagina
-
-  if(AllPaginas*totalPaginasBlock>=contadorPaginas){
-    for(let i=AllPaginas*totalPaginasBlock-totalPaginasBlock+1;i<=contadorPaginas;i++){
-        arrayPaginas.push(i)
-    }
-  }else{
-    for(let i=AllPaginas*totalPaginasBlock -totalPaginasBlock+1;i<=AllPaginas*totalPaginasBlock;i++){
-      arrayPaginas.push(i)
-    }
+  const ModeVew=()=>{
+    if(Mode==="ligthMode"){
+      localStorage.setItem('Modevew',"darkMode"),
+      setMode("darkMode")
+    
+    }else if(Mode==='darkMode'){(localStorage.setItem('Modevew',"ligthMode")),
+    setMode("ligthMode")
   }
-// console.log(contadorPaginas)
-// console.log(arrayPaginas)
-// console.log(Pagina)
-console.log(FilterPokemon)
-// console.log(Poketion)
+  }
+//?Pokemon Ramdom
+const [PokeRandom, setPokeRandom] = useState()
 
-let PokemonSearchLimit= PaginaLimitacion(FilterPokemon,Pagina)
-let PokemonTypeLimit=PaginaLimitacion(Poketion,Pagina)
+useEffect(() => {
+ const ran=Math.ceil(Math.random()*300)//TODO- random nos da unnumero aleatorio del 0 al 1 pero nunca 1
+ 
+ if(Poketion){
+ const URL=Poketion[ran]?.url
+ console.log(ran)
+ console.log(URL)
+  axios.get(URL )
+  .then(res=>setPokeRandom(res?.data))
+ }
+}, [FilterType])
 
-console.log(PokemonSearchLimit)
+console.log(PokeRandom)
+
+
   return (
     <div >
-
-      <h2>Welcome {nameCouch}</h2>
+      <div className='Head'>
+      <h2>Welcome  {nameCouch}</h2>
+      <div className='PokemonRandom'>
+          
+              <img src={ PokeRandom?.sprites?.other?.dream_world?.front_default?PokeRandom?.sprites?.other?.dream_world?.front_default:PokeRandom?.sprites?.front_default} alt="" />
+          
+      </div>
+      <button onClick={activClass} className='PokedexButton'><img src="https://cdn-icons-png.flaticon.com/512/1752/1752776.png" className='botonX' /> Open all pokeballs</button>
+      <button onClick={ModeVew} className='PokedexButton'>
+        <img src="https://cdn-icons-png.flaticon.com/512/1752/1752776.png" className='botonX' />{Mode==="ligthMode"?'CHANGE DARK MODE':'CHANGE LIGTH MODE'}</button>
       <div>
       </div>
-              <Form Estado={setSearchPokemon}
-                TypeList={TypeList}
-                FilterType={setFilterType}
-              />
-              <Paginas 
-              setPagina={setPagina}
-              Pagina={Pagina}
-              arrayPaginas={arrayPaginas}
-              contadorPaginas={contadorPaginas}
-              />
+      <Form Estado={setSearchPokemon}
+        TypeList={TypeList}
+        FilterType={setFilterType}
+      />
+
+      {
+        FilterPokemon?.length >= 1 && SearchPokemon?.length >= 1 ?
+          <Paginas
+            setPagina={setPagina}
+            Pagina={Pagina}
+            Cl={Clase}
+            arrayPaginas={PaginacionBlokeFilter?.arrayPaginas}
+            contadorPaginas={PaginacionBlokeFilter?.contadorPaginas}
+          /> :
+          <Paginas
+            setPagina={setPagina}
+            Pagina={Pagina}
+            Cl={Clase}
+            arrayPaginas={PaginacionBlokeType?.arrayPaginas}
+            contadorPaginas={PaginacionBlokeType?.contadorPaginas}
+          />
+
+      }
+      </div>
       <div className='Pokedex'>
 
         {
 
-          FilterPokemon?.length>=1&&SearchPokemon?.length>=1?
-          PokemonSearchLimit[0]?.map(Pokelol => (
-              <TargetPokemon
-                TypeList={TypeList}
-                FilterType={setFilterType}
-                URL={Pokelol.url}
-                key={Pokelol.name}
-              />
-            )
-            )
-            :
-            PokemonTypeLimit[0]?.map(Pokelol => (
-              <TargetPokemon
-                TypeList={TypeList}
-                FilterType={setFilterType}
-                URL={Pokelol.url}
-                key={Pokelol.name}
-              />
-            )
-            )
+          FilterPokemon?.length === 0 ?
+
+            <div>No existe este Pokemon</div>
+
+            : FilterPokemon?.length >= 1 && SearchPokemon?.length >= 1 ?
+              PokemonSearchLimit[0]?.map(Pokelol => (
+                <TargetPokemon
+                  TypeList={TypeList}
+                  FilterType={setFilterType}
+                  URL={Pokelol.url}
+                  Cl={Clase}
+                  key={Pokelol.name}
+                />
+              )
+              )
+              :
+              PokemonTypeLimit[0]?.map(Pokelol => (
+                <TargetPokemon
+                  TypeList={TypeList}
+                  FilterType={setFilterType}
+                  URL={Pokelol.url}
+                  Cl={Clase}
+                  key={Pokelol.name}
+                />
+              )
+              )
 
         }
       </div>

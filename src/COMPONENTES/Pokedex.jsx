@@ -128,19 +128,12 @@ useEffect(() => {
 
 
 
-
-
-
 const GoMayTarget=()=>{
   navigate('/MasInfo/')
   
 }
-
-
-
-
   return (
-    <div >
+    <div className='contenPokedex' >
       <div className='Head'>
       <h2>Welcome  {nameCouch}</h2>
       {PokeRandom?.sprites?.other?.dream_world?.front_default||PokeRandom?.sprites?.front_default?

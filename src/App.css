@@ -69,6 +69,7 @@ button{
   overflow: hidden;
   height: 600px;
   width: 700px;
+
 } 
 
 .inputWelcome{
@@ -157,13 +158,18 @@ button{
 }
 
 /* ---------------------------------Head------------------------------- */
+.contenPokedex{
+  width: 100%;
+  text-align: center;
+}
 .Head{
-  display: inline-block;
+  
   position: relative;
   background-color: rgba(54, 54, 54, 0.649);
  width: 90%;
   padding: 10px;
   border-radius: 0 0 50px 50px;
+  display: inline-block;
 }
 .PokedexButton{
   border-radius: 20px;
@@ -273,7 +279,7 @@ button{
 /* -------------------------pokebola------------------------ */
 
 .Pokedex{
-  width: 100%;
+  max-width:2000px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

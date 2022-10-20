@@ -37,16 +37,29 @@ code {
     }
   
   }
+  /* -------------------------pokebola------------------------ */
+  .Pokebola{
+    width: 200px;
+    height: 200px;
+  }
+  .PartRed{
+    border-bottom: 10px solid black;
+  }
+  .cerradura{
+    width: 40px;
+    height: 40px;
+    border: 10px solid rgb(0, 0, 0);
+  }
+
 }
 @media (max-width:500px){
   .contenLogo{
-    width:100% ;
+    width:300px;
     height: 200px;
     margin-bottom: 100px;
   }
   .logo{
     width: 300px;
-    left: 10%;
   }
   .inputWelcome{
     width: 330px;
@@ -60,5 +73,18 @@ code {
   .pokemonWelcome img{
     width: 100px;
   }
- 
+  /* -------------------------pokebola------------------------ */
+  .Pokebola{
+    width: 100px;
+    height: 100px;
+  }
+  .PartRed{
+    border-bottom: 8px solid black;
+  }
+  .cerradura{
+    width: 30px;
+    height: 30px;
+    border: 8px solid rgb(0, 0, 0);
+  }
+
 }

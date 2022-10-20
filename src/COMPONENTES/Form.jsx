@@ -22,7 +22,7 @@ const falc=e=>{
         <form className='Form'>
        
         <input type="text" placeholder='Search your favorite Pokemon'
-        onChange={rald}
+        onChange={rald} autoComplete='off'
         />
 
       <select className='Selection' onChange={falc}>

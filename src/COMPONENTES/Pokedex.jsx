@@ -2,11 +2,12 @@ import React from 'react'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import TargetPokemon from './TargetPokemon'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import Form from "./Form"
 import Paginas from './Paginas'
 import { Bloke, PaginaLimitacion } from '../utils/paginacion'
 import { useNavigate } from 'react-router-dom'
+import { reset } from './store/Slice/urlSlice'
 
 const Pokedex = ({setMode,Mode}) => {
   const nameCouch = useSelector(date => date.nameCouch)
@@ -17,8 +18,8 @@ const Pokedex = ({setMode,Mode}) => {
   const [TypeList, setTypeList] = useState()//*aqui se le pasa por propiedad todos los tipos de pokemon a Form para desplegar las Opciones
   const [FilterType, setFilterType] = useState("All Pokemon")//*se almacena la respuesta del input para mandar a llmar a los pokemones por tipo
   /////////////////////////
-
-
+const navigate=useNavigate()
+const dispach=useDispatch()
 const [Pagina, setPagina] = useState(1)
   //?Peticion condicionada 
   const getPokemones = () => {
@@ -107,25 +108,50 @@ useEffect(() => {
  
  if(Poketion){
  const URL=Poketion[ran]?.url
- console.log(ran)
- console.log(URL)
+ dispach(reset(URL))
   axios.get(URL )
-  .then(res=>setPokeRandom(res?.data))
+  .then(res=>{setPokeRandom(res?.data)
+  })
  }
-}, [FilterType])
+}, [])
+useEffect(() => {
+  const ran=Math.ceil(Math.random()*300)
+  
+  if(Poketion){
+  const URL=Poketion[ran]?.url
+  dispach(reset(URL))
+   axios.get(URL )
+   .then(res=>{setPokeRandom(res?.data)
+   })
+  }
+ }, [TypeList])
 
-console.log(PokeRandom)
+
+
+
+
+
+const GoMayTarget=()=>{
+  navigate('/MasInfo/')
+  
+}
+
+
 
 
   return (
     <div >
       <div className='Head'>
       <h2>Welcome  {nameCouch}</h2>
-      <div className='PokemonRandom'>
-          
-              <img src={ PokeRandom?.sprites?.other?.dream_world?.front_default?PokeRandom?.sprites?.other?.dream_world?.front_default:PokeRandom?.sprites?.front_default} alt="" />
-          
-      </div>
+      {PokeRandom?.sprites?.other?.dream_world?.front_default||PokeRandom?.sprites?.front_default?
+        <div className='PokemonRandom'>     
+        <img onClick={GoMayTarget} src={ PokeRandom?.sprites?.other?.dream_world?.front_default?PokeRandom?.sprites?.other?.dream_world?.front_default:
+          PokeRandom?.sprites?.front_default?
+          PokeRandom?.sprites?.front_default:'https://pm1.narvii.com/6210/1e21aac09c41b0481d73a80b2762cb4cd097b4d5_hq.jpg'}  />
+          <div className='coment'>{`Hello I'm ${PokeRandom?.name} Do you want to know more about me?`}</div>
+        </div>:null
+      }
+      
       <button onClick={activClass} className='PokedexButton'><img src="https://cdn-icons-png.flaticon.com/512/1752/1752776.png" className='botonX' /> Open all pokeballs</button>
       <button onClick={ModeVew} className='PokedexButton'>
         <img src="https://cdn-icons-png.flaticon.com/512/1752/1752776.png" className='botonX' />{Mode==="ligthMode"?'CHANGE DARK MODE':'CHANGE LIGTH MODE'}</button>

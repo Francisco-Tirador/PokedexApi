@@ -6,14 +6,13 @@ import { useSelector } from 'react-redux/es/exports'
 import { useDispatch } from 'react-redux/es/hooks/useDispatch'
 import { reset } from './store/Slice/urlSlice'
 
-const TargetPokemon = ({ URL,Cl}) => {
+const TargetPokemon = ({ URL, Cl }) => {
 
-const la=useSelector(state=>state.URL)
-const dispach=useDispatch()
-const api="hola"
-const [Color, setColor] = useState('No')
-    const [Pokemon, setPokemon] = useState(false)
-   
+    const la = useSelector(state => state.URL)
+    const dispach = useDispatch()
+    const api = "hola"
+    const [Pokemon, setPokemon] = useState()
+
     const getPokemon = () => {
         axios.get(URL)
             .then(api => setPokemon(api?.data))
@@ -25,62 +24,41 @@ const [Color, setColor] = useState('No')
     }, [])
 
 
-    useEffect(() => {
-         if(Pokemon)
-         { const URL=Pokemon?.species?.url
-            axios.get(URL)
-            .then(res=>setColor(res?.data))
-        // console.log('soy un solo renderizado')
-        }
-     }, [Pokemon])
+    const butt = useNavigate()
 
-    const butt=useNavigate()
-
-    const irATarge=()=>{
+    const goTarget = () => {
         butt("/MasInfo/")
-        dispach(reset(Pokemon))
+        dispach(reset(URL))
     }
-    
-    
-    const color = {
-    backgroundColor:Color?.color?.name
-  }
+
     const nameMA = Pokemon?.name?.toUpperCase()
 
     return (
-            <div>
-                <div className='Pokebola'>
-                    <div className={` ${Cl&&'PartRed'}`}><div className='cerradura'><p>{Pokemon?.id}</p></div></div>
-                    <div className={` ${Cl&&'PartWhait'}`}></div>
-                    <div className='Information'>
-      
+        <div>
+            <div className='Pokebola'>
+                <div className={` ${Cl && 'PartRed'}`}>
+                    {
                         <p>{Pokemon?.id}</p>
-                        <div className={`CircleColor `} 
-                        // style={color}
-                        >
-                            <img src={Pokemon?.sprites?.other?.dream_world?.front_default?Pokemon?.sprites?.other?.dream_world?.front_default:Pokemon?.sprites?.front_default} alt="" />
-                        </div>
-                        <h2>{nameMA}</h2>
-                        {/* <p>{Pokemon?.types[0]?.type?.name}</p> */}
+                    }
+                    <div className='cerradura'>{
+                        <img className='prePokemon' onClick={goTarget} src={Pokemon?.sprites?.front_default ?
+                            Pokemon?.sprites?.front_default : 'https://pm1.narvii.com/6210/1e21aac09c41b0481d73a80b2762cb4cd097b4d5_hq.jpg'} alt="" />
+                    }</div>
+                </div>
+                <div className={` ${Cl && 'PartWhait'}`}></div>
+                <div className='Information'>
+
+                    <p>{Pokemon?.id}</p>
+                    <div className={`CircleColor ${Pokemon?.types[0]?.type.name} `}>
+                        <img onClick={goTarget} src={Pokemon?.sprites?.other?.dream_world?.front_default ? Pokemon?.sprites?.other?.dream_world?.front_default : Pokemon?.sprites?.front_default ?
+                            Pokemon?.sprites?.front_default : 'https://pm1.narvii.com/6210/1e21aac09c41b0481d73a80b2762cb4cd097b4d5_hq.jpg'} alt="" />
                     </div>
+                    <h2>{nameMA}</h2>
+              
                 </div>
             </div>
+        </div>
     )
 }
 
 export default TargetPokemon
-
-
-{/* <div className="targetPokemon"> */}
-
-{/* <div>
-    <p>{Pokemon?.id}</p>
-    <h2>{nameMA}</h2>
-    <img src={Pokemon?.sprites?.front_default} alt="" />
-
-
-</div>
-
-
-<p onClick={irATarge}>Mas sobre mi</p>
-</div>  */}

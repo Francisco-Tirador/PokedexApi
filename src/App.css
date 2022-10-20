@@ -17,19 +17,21 @@ background-image: url(https://www.teahub.io/photos/full/276-2766009_anime-landsc
   background-image: url(https://i.pinimg.com/originals/5b/cd/d9/5bcdd9b8f8e99f96d73193806b78f4a4.png);
  
 }
-/* body{
-  
-  background-image: url(https://i.pinimg.com/originals/5b/cd/d9/5bcdd9b8f8e99f96d73193806b78f4a4.png);
- 
-} */
-/* body::-webkit-scrollbar{
-  width: 1px;
-  background:none;
+.Footer {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  width: 100%;
+  text-align: center;
+  color: wheat;
+  z-index: 100;
+
+  bottom: 0;
 }
-body::-webkit-scrollbar-thumb{
-  width: 1px;
-  background:none;
-} */
+.Footer img {
+  width: 25px;
+  margin: 0 10px;
+}
 
 .App::-webkit-scrollbar{
   width: 0px;
@@ -52,6 +54,7 @@ button{
 
 .botonX{
   width:50px;
+  height: 50px;
   cursor: pointer;
 }
 
@@ -180,11 +183,19 @@ button{
 }
 .PokemonRandom{
   position: absolute;
-  background-color: yellow;
   margin-left: 2%;
+  display: flex;
+}
+.coment{
+  overflow: hidden;
+  background-color: antiquewhite;
+  width: 80px;
+  border-radius: 20px;
+  padding: 1px;
 }
 .PokemonRandom img {
-  width: 60px;
+  width: 80px;
+  cursor: pointer;
 }
 /* -----------------------------Form of Head -------------------------- */
 .Form{
@@ -351,19 +362,31 @@ border-radius: 50%;
 }
 
 .water{
-  background-color: rgb(5, 129, 231);
+  background-image:linear-gradient(to top, rgb(70, 206, 255),rgb(2, 42, 218)) ;
 }
 .fire{
-  background-color: rgb(232, 5, 5);
+  background-image:linear-gradient(to top, rgb(243, 0, 0),rgb(247, 255, 19)) 
 }
-.grass{
-  background-color: rgb(131, 204, 82);
-}
+.grass{background-color: rgb(131, 204, 82);}
 .bug{background-color: rgb(42, 162, 42);}
+.poison{background-color: rgb(142, 4, 192);}
+.normal{background-color: rgb(230, 238, 165);}
+.psychic{background-image:linear-gradient(to top, rgb(255, 230, 70),rgb(88, 1, 110)) ;}
+.ground{background-color: rgb(255, 210, 28);}
+.fighting{background-color: rgb(107, 1, 1);}
+.ghost{background-image:linear-gradient(to top, rgb(3, 3, 3),rgb(88, 1, 110)) ;}
+.rock{background-image:linear-gradient(to top, rgb(88, 88, 88),rgb(69, 60, 5))};
+.fairy{background-color: rgb(251, 169, 242);}
+.dark{background-color: rgb(14, 14, 14);}
+.steel{background-image:linear-gradient(to top, rgb(3, 3, 3),rgb(238, 236, 236)) ;}
+.electric{background-color: yellow;}
+.ice{background-image:linear-gradient(to top, rgb(251, 251, 251),rgb(87, 205, 255))}
+.dragon{background-image:linear-gradient(to top, rgb(182, 26, 26),rgb(5, 5, 5))}
 
 
 .Pokebola:hover .Information{
   transform:rotateY(1deg) ;
+  cursor: pointer;
 }
 
 @keyframes movIMG{
@@ -378,28 +401,95 @@ border-radius: 50%;
   width:25%
 }
 
-
-
-
-
-
-.tipo{
-  width: 25px;
-  height: 10px;
-  border-radius: 10px;
+.prePokemon{
+  width: 80px;
+  height: 80px;
+  position: relative;
+  top: -55%;
 }
 
-
-
-.buttMode{
-width: 5%;
+/* -----------------------MasInfoTarget----------------------- */
+.MasInfoTarget{
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(57, 57, 57);
+  padding: 50px;
+}
+.MasInfoTarget button:hover{
+  transform: scale(1.2);
+}
+.Infoimagen{
+  width: 500px;
+  height: 600px;
+  background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgdakgX5FmBKm87BmdN2EPxkECBVo_DWXeZb2JlULRGbZQ7LVPYE0_1U2xaOXld_mZ24Q&usqp=CAU);
+  background-size: contain;
+  overflow: hidden;
+  border-radius: 50px;
+  transform: scale(10);
+  z-index: 400;
+  animation: 1s 1 linear forwards Caida;
+  box-sizing: border-box;
+  border: 10px inset rgb(92, 91, 91);
 }
 
-.Soleado{
-  background-color: rgb(24, 121, 177);
+@keyframes Caida{
+  100%{transform: scale(1);}
+}
+.Infoimagen img{
+  width:450px ;
+  height: 550px;
+ 
+}
+.Info{
+  box-sizing: border-box;
+  width: 300px;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 0 50px 50px 0;
+  transform: translateX(-350px);
+  animation: 2s 1 linear forwards MovTarget;
+}
+.Info h2{
+  background-color: black;
+  color: aliceblue;
+  border-radius: 20px 20px;
+}
+@keyframes MovTarget{
+  100%{transform: translate(0px);}
+}
+.gat{
+  box-sizing: content-box;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: start;
+  background-color: rgba(0, 0, 0, 0.464);
+  margin-top: 10px;
+}
+.gat span{
+  color: aliceblue;
+  font-size: 20px; 
 }
 
-.Obscuro{
-  background-color: rgb(56, 56, 56);
+.gat p{
+  font-weight: 700;
+}
+.blackContra{
   color: white;
 }
+.sprites{
+  background-color: rgb(23, 23, 23);
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+.Infimag{
+  width: 120px;
+}
+.tipo{
+  width: 50px;
+  height: 22px;
+  border-radius: 10px;
+}
+p{
+  margin: 0;
+}
+

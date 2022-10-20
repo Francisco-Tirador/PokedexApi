@@ -46,7 +46,7 @@ const dispach=useDispatch()
      <div className='inputWelcome'>
         <form onSubmit={handleSubmit(submit)}>
             <label htmlFor="name">Name</label>
-            <input  placeholder="Enter your name" type="text" id='name' required {...register("NombreEntrenador")}/>
+            <input  placeholder="Enter your name" type="text" id='name' required  autoComplete='off'{...register("NombreEntrenador")}/>
             <button onClick={submit}><img className='botonX' src="https://cdn-icons-png.flaticon.com/512/1536/1536958.png"/></button>
         </form>
         </div>

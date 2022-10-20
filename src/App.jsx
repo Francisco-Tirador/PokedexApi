@@ -4,12 +4,14 @@ import { Routes,Route,Link } from 'react-router-dom'
 import House from './COMPONENTES/House'
 import Pokedex from './COMPONENTES/Pokedex'
 import MasInfoPokemon from './COMPONENTES/MasInfoPokemon'
-
+import Footer from './COMPONENTES/Footer'
+import ProtectedRoutes from './COMPONENTES/ProtectedRoutes'
+import { useSelector } from 'react-redux'
 
 function App() {
 
 const [Mode, setMode] = useState() 
-
+const name=useSelector(res=>res.nameCouch)
  
 
 useEffect(() => {
@@ -38,9 +40,12 @@ useEffect(() => {
      <Routes>
       
       <Route path='/' element={<House/>}/>
+      <Route element={<ProtectedRoutes Name={name}/>}>
       <Route  path="/POKEDEX/" element={<Pokedex  setMode={setMode} Mode={Mode} />}/>
       <Route path='/MasInfo/' element={<MasInfoPokemon/>}/>
+      </Route>
      </Routes>
+     <Footer/>
     </div>
   )
 }

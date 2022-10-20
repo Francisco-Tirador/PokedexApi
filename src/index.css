@@ -51,7 +51,49 @@ code {
     border: 10px solid rgb(0, 0, 0);
   }
 
+/* ----------------------------head----------------------- */
+.PokedexButton{
+  box-sizing: content-box;
+  width: 100px;
+  font-size: x-small;
+  margin-left: 10px;
 }
+.ContenBoton{
+  display: flex;
+  justify-content: end;
+}
+.Form{
+  margin-top: 12%;
+}
+
+.pagi{
+  width: 10px;
+  height: 10px;
+}
+.Information img{
+  width: 80px;
+}
+.MasInfoTarget{
+  display: block;
+}
+.Infoimagen{
+  height: 400px;
+}
+.Info{
+  overflow: hidden;
+  width: 0%;
+  transform: translateX(0px);
+  animation: 2s 1 linear forwards MovTarget;
+  border-radius: 0 0 40px 40px;
+}
+
+@keyframes MovTarget{
+  100%{width: 100%;}
+}
+
+}
+
+
 @media (max-width:500px){
   .contenLogo{
     width:300px;
@@ -86,5 +128,54 @@ code {
     height: 30px;
     border: 8px solid rgb(0, 0, 0);
   }
-
+  .pagi{
+    width: 5px;
+    height: 5px;
+    font-size: 15px;
+    margin: 0 5px;
+  }
+  .Fle{
+    width: 45px;
+    background-size: cover;
+  }
+  .Form input{
+    width: 200px;
+  }
+  .PokedexButton{
+    margin-bottom: 5px;
+  }
+  .ContenBoton{
+    width: 100px;
+    display: inline-block;
+    margin-left: 140px;
+  }
+  .Information h2{
+    font-size: 10px;
+  }
+  .Information img{
+    width: 40px;
+      animation: 1s infinite ease-in-out alternate movIMG;
+  }
+  @keyframes movIMG{
+    100%{
+      transform: translateY(-15px);
+    }
+  }
 }
+
+@media (max-width:950px){
+.Infoimagen img{
+  width:250px ;
+  height: 400px;
+ 
+}
+}
+@media (max-width:750px){
+  .Infoimagen img{
+    width:200px ;
+    height: 400px;
+   
+  }
+}
+
+

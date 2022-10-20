@@ -144,11 +144,12 @@ const GoMayTarget=()=>{
           <div className='coment'>{`Hello I'm ${PokeRandom?.name} Do you want to know more about me?`}</div>
         </div>:null
       }
-      
+      <div className='ContenBoton'>
       <button onClick={activClass} className='PokedexButton'><img src="https://cdn-icons-png.flaticon.com/512/1752/1752776.png" className='botonX' /> Open all pokeballs</button>
       <button onClick={ModeVew} className='PokedexButton'>
         <img src="https://cdn-icons-png.flaticon.com/512/1752/1752776.png" className='botonX' />{Mode==="ligthMode"?'CHANGE DARK MODE':'CHANGE LIGTH MODE'}</button>
-      <div>
+      </div>
+    <div>
       </div>
       <Form Estado={setSearchPokemon}
         TypeList={TypeList}

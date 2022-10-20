@@ -41,7 +41,7 @@ const TargetPokemon = ({ URL, Cl }) => {
                         <p>{Pokemon?.id}</p>
                     }
                     <div className='cerradura'>{
-                        <img className='prePokemon' onClick={goTarget} src={Pokemon?.sprites?.front_default ?
+                        <img className='prePokemon' src={Pokemon?.sprites?.front_default ?
                             Pokemon?.sprites?.front_default : 'https://pm1.narvii.com/6210/1e21aac09c41b0481d73a80b2762cb4cd097b4d5_hq.jpg'} alt="" />
                     }</div>
                 </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { useHref, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 import { useEffect, useState } from 'react'
@@ -21,9 +21,10 @@ const MasInfoPokemon = () => {
 
   }
 
-
+  // const href=useHref(null)
 
   useEffect(() => {
+    // href('#Principal')
     axios.get(api)
       .then(res => setPokemon(res.data))
   }, [])
@@ -46,9 +47,9 @@ const MasInfoPokemon = () => {
     backgroundColor: info?.color?.name
   }
 
-
+// ref={'Principal'
   return (
-    <div className='MasInfoTarget'>
+    <div className='MasInfoTarget' >
       <button onClick={regreso}><img className='botonX' src="https://cdn-icons-png.flaticon.com/512/4885/4885344.png" title='Return to Pokedex' /></button>
       <div className='Infoimagen'>
         <img src={Pokemon?.sprites?.other?.dream_world?.front_default ? Pokemon?.sprites?.other?.dream_world?.front_default : Pokemon?.sprites?.front_default ?
